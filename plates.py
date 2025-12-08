@@ -6,7 +6,7 @@
 
 # #initial plan
 # 2 <= len(string) <= 6
-# slice the list [0:2] and check whether they are letters or not
+# slice the list [0:2] and check whether first two are letters or not
 # use in statement to check whether there are punctuation and spaces
 # check endwith method to check whether number is in end 
 
@@ -19,10 +19,60 @@ def main():
 
 
 def is_valid(s):
-    if length_check(s) and  first_2_letter_check() and end_is_number_check() and only_letter_number_check():
+    if length_check(s) and  first_2_letter_check(s) and end_is_number_check(s) and no_punctuation_space_check(s):
         return True
     else:
         return False
+
+
+def length_check(plate):
+    if 2 <= len(plate) <= 6:
+        return True
+    else:
+        return False
+
+def first_2_letter_check(plate):
+
+    first_2_letter = plate[0:2]
+
+    if not first_2_letter.isdecimal(): #checks whether it's not numeric character 
+        return True
+    else:
+        return False
+    
+def no_punctuation_space_check(plate):
+
+    check = True
+    punctuation = ["!", "#", "$", "%", "&" , "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";" ,"<" , "=", ">", "?", "@", "[", "]", "^", "`", "{", "|" ,"}", "~",'"'," "]
+    for i in plate:
+        if i in punctuation:
+            check = False
+            
+    if check: return True
+    else: return False
+
+def end_is_number_check(plate):
+    # iterate plate 
+    # check whether there is number
+    # if then check whether it's in last
+
+    number = False
+
+    for i in plate: # Checks whether there is number in inputed plate number
+        if i.isdecimal(): 
+            number = True 
+
+    if number: # Check whether number == True
+        if plate.endswith(tuple(f"{i}" for i in range(10))): # makes list 0 to 9 and then convert that list to tuple. endswith(tuple) is to check whether there is number at the end
+            return True
+        else: 
+            return False
+        
+    else:
+        return True
+
+
+
 
 
 main()
