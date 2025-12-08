@@ -3,6 +3,7 @@
 #str.isupper() ,str.casefold()
 
 s = input("camelCase: ")
+print("snake_case: " , end="")
 
 for c in s:
     replacer = c 
