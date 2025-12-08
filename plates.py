@@ -19,26 +19,28 @@ def main():
 
 
 def is_valid(s):
-    if length_check(s) and  first_2_letter_check(s) and end_is_number_check(s) and no_punctuation_space_check(s):
+
+    if length_check(s) and first_2_letter_check(s) and end_is_number_check(s) and no_punctuation_space_check(s):
         return True
     else:
         return False
 
 
 def length_check(plate):
-    if 2 <= len(plate) <= 6:
+
+    if 2 <= len(plate) <= 6: #Check length of plate
         return True
     else:
         return False
 
 def first_2_letter_check(plate):
 
-    first_2_letter = plate[0:2]
+    first_2_letter = plate[0:2] #slice first two value of plate string
 
     if not first_2_letter.isdecimal(): #checks whether it's not numeric character 
-        return True
+        return True # If it's not decimal, it's Alphabet ! (Note: punctuation check is checked in other function)
     else:
-        return False
+        return False 
     
 def no_punctuation_space_check(plate):
 
@@ -52,9 +54,9 @@ def no_punctuation_space_check(plate):
     else: return False
 
 def end_is_number_check(plate):
-    # iterate plate 
+    # Iterate plate 
     # check whether there is number
-    # if then check whether it's in last
+    # if then check whether it's in last or not
 
     number = False
 
@@ -62,17 +64,14 @@ def end_is_number_check(plate):
         if i.isdecimal(): 
             number = True 
 
-    if number: # Check whether number == True
-        if plate.endswith(tuple(f"{i}" for i in range(10))): # makes list 0 to 9 and then convert that list to tuple. endswith(tuple) is to check whether there is number at the end
+    if number: # Check whether number === True
+        if plate.endswith(0, 1, 2, 3, 4, 5, 6 ,7 ,8, 9): # check whet
             return True
         else: 
-            return False
+            return False # Numbers are in middle or at start
         
     else:
-        return True
-
-
-
+        return True # Returns True if there is no number , so there won't be numbers in middle
 
 
 main()
