@@ -15,7 +15,9 @@ def main():
 
 def is_valid(s):
 
-    if length_check(s) and first_2_letter_check(s) and number_middle_check(s) and no_punctuation_space_check(s): #I created function for all type of check
+    if s == "": return False
+
+    elif length_check(s) and first_2_letter_check(s) and number_middle_check(s) and no_punctuation_space_check(s): #I created function for all type of check
         return True
     else:
         return False
